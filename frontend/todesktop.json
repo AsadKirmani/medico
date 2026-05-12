@@ -1,0 +1,6 @@
+{
+    "id": "230519sdmto722r",
+    "icon": "./src/assets/img/desktop-icon.png",
+    "schemaVersion": 1,
+    "appFiles": ["./**/*.js"]
+  }
