@@ -1,5 +1,5 @@
 # Importing JDK and copying required files
-FROM openjdk:17-jdk AS build
+FROM amazoncorretto:17
 WORKDIR /app
 COPY pom.xml .
 COPY src src
@@ -12,8 +12,8 @@ COPY .mvn .mvn
 RUN chmod +x ./mvnw
 RUN ./mvnw clean package -DskipTests
 
-# Stage 2: Create the final Docker image using OpenJDK 17
-FROM openjdk:17-jdk
+# Stage 2: Create the final Docker image using AmazonCorretto 17
+FROM amazoncorretto:17
 VOLUME /tmp
 
 # Copy the JAR from the build stage
