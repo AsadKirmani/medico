@@ -1,5 +1,5 @@
 # Importing JDK and copying required files
-FROM amazoncorretto:17
+FROM amazoncorretto:17 AS build
 WORKDIR /app
 COPY pom.xml .
 COPY src src
