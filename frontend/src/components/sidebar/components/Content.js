@@ -41,7 +41,7 @@ function SidebarContent(props) {
           
           <Badge colorScheme="green" mt='3px'>
           <Text fontSize='sm' fontWeight='500' >
-            ADMIN
+            {currentUser?.roles[0].replace("ROLE_", "")}
           </Text>
           </Badge>
         </Box>

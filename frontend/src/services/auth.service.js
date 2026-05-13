@@ -4,7 +4,7 @@ import TokenService from "./token.service";
 // ─── DUMMY MODE ───────────────────────────────────────────────────────────────
 // Set to true to bypass the backend and use hardcoded credentials for UI testing.
 // Flip to false when connecting to the real backend.
-const DUMMY_MODE = true;
+const DUMMY_MODE = false;
 
 const DUMMY_CREDENTIALS = { username: "admin", password: "admin123" };
 const DUMMY_USER = {
