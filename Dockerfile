@@ -1,22 +1,14 @@
-# Importing JDK and copying required files
-FROM openjdk:17-jdk AS build
+# Stage 1: Build stage using Maven and Corretto 17
+FROM maven:3.9-amazoncorretto-17 AS build
+WORKDIR /build
+COPY . .
+RUN mvn clean package -DskipTests
+
+# Stage 2: Runtime stage
+FROM amazoncorretto:17-alpine-jdk
 WORKDIR /app
-COPY pom.xml .
-COPY src src
+COPY --from=build /build/target/*.jar app.jar
 
-# Copy Maven wrapper
-COPY mvnw .
-COPY .mvn .mvn
-
-# Set execution permission for the Maven wrapper
-RUN chmod +x ./mvnw
-RUN ./mvnw clean package -DskipTests
-
-# Stage 2: Create the final Docker image using OpenJDK 17
-FROM openjdk:17-jdk
-VOLUME /tmp
-
-# Copy the JAR from the build stage
-COPY --from=build /app/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+# Run the application
 EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
