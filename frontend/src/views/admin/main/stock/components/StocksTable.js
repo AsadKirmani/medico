@@ -200,7 +200,7 @@ import {
                       <Text color={textColor} fontSize='md' fontWeight='500'>{stock?.quantity}</Text>
                       </Td>
                     <Td>
-                      <Link to={`/admin/main/stocks/${stock.sid}/edit`}>
+                      <Link to={`/admin/main/stocks/${stock.id}/edit`}>
                             <Icon
                               color='secondaryGray.500'
                               as={MdEdit}
